@@ -7,6 +7,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
+import jdk.nashorn.internal.objects.annotations.Getter;
+
 @Path("/hello")
 public class Hello {
 
@@ -15,7 +17,7 @@ public class Hello {
 	//we need to add a mapper that will explain this object to json ;
 	
 	
-	@POST
+	@GET
 	@Path("/test")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getStudentDetails(@QueryParam("name") String name, @QueryParam("collegeName") String collegeName) {
