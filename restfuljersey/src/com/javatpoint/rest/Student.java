@@ -3,6 +3,8 @@ package com.javatpoint.rest;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.json.JSONObject;
+
 @XmlRootElement(name = "student")
 public class Student {
 	private String name;
@@ -26,7 +28,10 @@ public class Student {
 		this.collegeName = collegeName;
 	}
 
-	public String getJSON() {
-		return "{" + "name:" + this.getName() + ",\ncollegeName:" + this.getCollegeName() + "" + "}";
+	public JSONObject getJSON() {
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("Name", this.name);
+		jsonObject.put("CollegeName ", this.collegeName);
+		return jsonObject;
 	}
 }

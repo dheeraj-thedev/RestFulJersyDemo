@@ -6,29 +6,29 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
 import jdk.nashorn.internal.objects.annotations.Getter;
 
 @Path("/hello")
 public class Hello {
 
-	
-	// Akash this is working fine for XML 
-	//we need to add a mapper that will explain this object to json ;
-	
-	
+	// Akash this is working fine for XML
+	// we need to add a mapper that will explain this object to json ;
+
 	@GET
 	@Path("/test")
 	@Produces(MediaType.APPLICATION_JSON)
-	public String getStudentDetails(@QueryParam("name") String name, @QueryParam("collegeName") String collegeName) {
+	public Response getStudentDetails(@QueryParam("name") String name, @QueryParam("collegeName") String collegeName) {
 		System.out.println("Message Received");
 		System.out.println(name + "fjdlkfd" + collegeName);
 		Student student = new Student();
 		student.setName(name);
 		student.setCollegeName(collegeName);
 		System.out.println(student);
-		// return Response.status(Status.OK).entity(student).build();//student.getCollegeName();
-		return student.getJSON();
+		return Response.status(Status.OK).entity(student.getJSON().toString()).build();// student.getCollegeName();
+		// return student.getJSON();
 	}
 
 	@GET
